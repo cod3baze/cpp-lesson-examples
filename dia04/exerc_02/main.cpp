@@ -13,7 +13,7 @@ int main()
   cout << "Informe o valor: ";
   cin >> numero;
 
-  for (int c = 0; c <= numero; c++)
+  for (int c = 1; c <= numero; c++)
   {
     cout << c << endl;
   }

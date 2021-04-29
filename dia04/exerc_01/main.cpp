@@ -17,7 +17,7 @@ int main()
   cout << "Informe o terfeiro valor: ";
   cin >> num3;
 
-  if (num1 >= num2 && num1 >= num3)
+  if (num1 > num2 && num1 > num3)
   {
     cout << "O primeiro valor é maior" << endl;
     cout << num1 << endl;
@@ -27,10 +27,15 @@ int main()
     cout << "O segundo valor é maior" << endl;
     cout << num2 << endl;
   }
+  else if (num3 > num1 && num3 > num2)
+  {
+    cout << "O terceiro valor é maior" << endl;
+    cout << num3 << endl;
+  }
   else
   {
     cout << "Ambos os valores sao iguais" << endl;
-    cout << num2 << endl;
+    cout << num1 << endl;
   }
 
   return 0;

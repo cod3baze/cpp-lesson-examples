@@ -8,16 +8,19 @@ using namespace std;
 
 int main()
 {
-  int valores, media;
+  int valores, valor, media;
 
-  for (int c = 0; c <= 10; c++)
+  for (int c = 1; c <= 10; c++)
   {
-    cout << c + "* Valor: ";
-    cin >> valores;
+    cout << c;
+    cout << "* Valor: ";
+    cin >> valor;
 
-    valores += valores;
+    valores += valor;
   }
-  media = (valores / 10);
+  media = valores / 10;
+
+  printf("media dos valores digitados: %i", media);
 
   return 0;
 }
