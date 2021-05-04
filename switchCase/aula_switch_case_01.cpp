@@ -12,6 +12,7 @@ int main()
     cout << "\t (1)...MAmao " << endl;
     cout << "\t (2)...Abacaxi " << endl;
     cout << "\t (3)...Laranja " << endl;
+    cout << ">> ";
     cin >> opcao;
 
     system("cls");
@@ -19,21 +20,24 @@ int main()
     switch (opcao)
     {
     case 1:
-      cout << "\t Você escolheu Mamao";
+      cout << "\t Voce escolheu Mamao";
       break;
 
     case 2:
-      cout << "\t Você escolheu Abacaxi";
+      cout << "\t Voce escolheu Abacaxi";
       break;
 
     case 3:
-      cout << "\t Você escolheu Laranja";
+      cout << "\t Voce escolheu Laranja";
       break;
 
     default:
       cout << "\t\t A opcao selecionada nao existe";
       break;
     }
+
+    cout << "\n\n";
+    system("pause");
   } while (opcao >= 1 && opcao <= 3);
 
   return 0;
