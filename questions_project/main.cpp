@@ -32,10 +32,8 @@ void regras()
   printf("======================================================\n");
   printf("O jogo contém 30 perguntas \n");
   printf("Sendo elas 10 faceis, 10 intermediárias e 10 dificeis! \n");
-  printf("Ao longo do jogo você terá 3 vidas e 2 ajudas! \n");
+  printf("Ao longo do jogo voce tera 3 vidas e 2 ajudas! \n");
   printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n");
-
-  system("pause");
 }
 
 void statusmenu()
@@ -61,6 +59,7 @@ void menuprincipal()
 
     if (status == 1)
     {
+      system("cls");
       statusmenu();
       iniciar();
     }
@@ -151,8 +150,6 @@ void finalizar()
   printf("======================================= \n");
   printf("== VIDAS RESTANTES: %i \n", vidas);
   printf("== AJUDAS RESTANTES: %i \n", ajudas);
-  printf("== PONTUAÇÃO %i DE 100 \n", pontuacao_atual);
+  printf("== PONTUACAO %i DE 100 \n", pontuacao_atual);
   printf("- - - - - - - - - - - - - - - - - - - - \n\n");
-
-  system("pause");
 }
