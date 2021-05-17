@@ -28,16 +28,16 @@ public:
   string opcaoD;
 
   Question(
-      string title,
-      char answer,
+      string tit,
+      char ans,
       string a, string b, string c, string d)
   {
-    title = title;
-    answer = answer;
+    title = tit;
+    answer = ans;
     opcaoA = a;
-    opcaoB = a;
-    opcaoC = a;
-    opcaoD = a;
+    opcaoB = b;
+    opcaoC = c;
+    opcaoD = d;
   }
 };
 
@@ -99,11 +99,19 @@ void menuprincipal()
 // - - - - - - --  - - - -- - -- - -  -
 
 Question questions01[5] = {
-    Question("Existe mais de 1 polo norte. voçê sabe quantos são?", 'A', "", "", "", ""),
-    Question("Quais dessas regiões não faz parte do territótio Ártico?", 'C', "", "", "", ""),
-    Question("O polo norte se banha em qual oceano?", 'B', "", "", "", ""),
-    Question("Quias desses animais NÃO é possível ver no Polo Norte?", 'D', "", "", "", ""),
-    Question("Qual é mais frio, o Polo norte ou o Polo sul?", 'A', "", "", "", "")};
+    Question("Existe mais de 1 polo norte. voçê sabe quantos são?", 'A', "Pelo menos tres Polos Nortes", "Dois polo norte", "Nenhuma das opcoes", "Apenas um polo norte"),
+
+    Question("Quais dessas regiões não faz parte do territótio Ártico?", 'C', "Canada", "Groenlandia", "China", "EUA"),
+
+    Question("O polo norte se banha em qual oceano?",
+             'B',
+             "Oceano Atlantico", "Oceano Glacial Artico", "Oceano Pacifico", "Nenhuma das opcoes"),
+
+    Question("Quias desses animais NÃO é possível ver no Polo Norte?",
+             'D', "Baleia Jubarte", "Leao marinho", "Peixe", "Pinguim-imperador"),
+
+    Question("Qual é mais frio, o Polo norte ou o Polo sul?",
+             'A', "Polo Sul", "Polo Norte", "Ambos", "Nenhum")};
 
 void iniciar()
 {
@@ -113,18 +121,35 @@ void iniciar()
   for (int c = 0; c <= 3; c++)
   {
     cout << "[5 pontos] - " << questions01[c].title << endl;
-    printf("A - SIM \n");
-    printf("B - NAO \n");
-    printf("C - TALVEZ \n\n");
+    cout << "\t A - " << questions01[c].opcaoA << endl;
+    cout << "\t B - " << questions01[c].opcaoB << endl;
+    cout << "\t C - " << questions01[c].opcaoC << endl;
+    cout << "\t D - " << questions01[c].opcaoD << endl;
 
-    printf("- - - - - - - - - - - - - - - - - - - - \n");
-    printf("AJUDA - pedir ajuda aos universitarios \n");
+    printf("\n - - - - - - - - - - - - - - - - - - - - \n");
+    printf("R - para pedir ajuda aos universitarios \n");
     printf("- - - - - - - - - - - - - - - - - - - - \n\n");
 
     printf("JOGADOR-01 >> ");
     cin >> opcao;
 
-    int res = avalia_resposta(opcao, 'B');
+    if (opcao == 'R') // Ajuda AOS UNIVERSITARIOS
+    {
+      if (ajudas >= 1) // se AINDA TEM AJUAS DISPONIVEL
+      {
+        printf("\n A opcao correta é a X \n\n");
+        ajudas -= 1;
+
+        printf("JOGADOR-01 >> ");
+        cin >> opcao;
+      }
+    }
+    if (opcao == 'F')
+    {
+      break;
+    }
+
+    int res = avalia_resposta(opcao, questions01[c].answer);
     system("pause");
     system("cls");
     statusmenu();
