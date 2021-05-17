@@ -17,6 +17,30 @@ int vidas = 3;
 int ajudas = 2;
 int pontuacao_atual = 0;
 
+class Question
+{
+public:
+  string title;
+  char answer;
+  string opcaoA;
+  string opcaoB;
+  string opcaoC;
+  string opcaoD;
+
+  Question(
+      string title,
+      char answer,
+      string a, string b, string c, string d)
+  {
+    title = title;
+    answer = answer;
+    opcaoA = a;
+    opcaoB = a;
+    opcaoC = a;
+    opcaoD = a;
+  }
+};
+
 int main()
 {
   setlocale(LC_ALL, "Portuguese");
@@ -72,15 +96,14 @@ void menuprincipal()
   } while (status != 0);
 }
 
-string nivel01[4] = {
-    "Existe mais de 1 polo norte. voçê sabe quantos são?",
-    "Quais dessas regiões não faz parte do territótio Ártico?",
-    "O polo norte se banha em qual oceano?",
-    "Quias desses animais NÃO é possível ver no Polo Norte?"};
+// - - - - - - --  - - - -- - -- - -  -
 
-string nivel02[2] = {
-    "Quias desses animais NÃO é possível ver no Polo Norte?",
-    "Qual é mais frio, o Polo norte ou o Polo sul?"};
+Question questions01[5] = {
+    Question("Existe mais de 1 polo norte. voçê sabe quantos são?", 'A', "", "", "", ""),
+    Question("Quais dessas regiões não faz parte do territótio Ártico?", 'C', "", "", "", ""),
+    Question("O polo norte se banha em qual oceano?", 'B', "", "", "", ""),
+    Question("Quias desses animais NÃO é possível ver no Polo Norte?", 'D', "", "", "", ""),
+    Question("Qual é mais frio, o Polo norte ou o Polo sul?", 'A', "", "", "", "")};
 
 void iniciar()
 {
@@ -89,7 +112,7 @@ void iniciar()
 
   for (int c = 0; c <= 3; c++)
   {
-    cout << "[5 pontos] - " << nivel01[c] << endl;
+    cout << "[5 pontos] - " << questions01[c].title << endl;
     printf("A - SIM \n");
     printf("B - NAO \n");
     printf("C - TALVEZ \n\n");
