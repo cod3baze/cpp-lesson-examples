@@ -9,6 +9,7 @@ using namespace std;
 void regras();
 void statusmenu();
 void menuprincipal();
+int avalia_resposta(char opcao, char correta);
 void iniciar();
 void finalizar();
 
@@ -42,7 +43,7 @@ void statusmenu()
   printf("========================= \n");
   printf("== Vidas restantes: %i \n", vidas);
   printf("== Ajudas restantes: %i \n", ajudas);
-  printf("== Pontuação atual: %i \n", pontuacao_atual);
+  printf("== Pontuacaoo atual: %i \n", pontuacao_atual);
   printf("- - - - - - - - - - - - - \n\n");
 }
 
@@ -53,7 +54,7 @@ void menuprincipal()
   do
   {
     printf("[0] - para sair do jogo! \n");
-    printf("[1] - para iniciar o jogo! \n\n");
+    printf("[1] - para comecar uma nova partida! \n\n");
     printf("JOGADOR-01 >> ");
     scanf("%i", &status);
 
@@ -71,10 +72,11 @@ void menuprincipal()
   } while (status != 0);
 }
 
-string nivel01[3] = {
+string nivel01[4] = {
     "Existe mais de 1 polo norte. voçê sabe quantos são?",
     "Quais dessas regiões não faz parte do territótio Ártico?",
-    "O polo norte se banha em qual oceano?"};
+    "O polo norte se banha em qual oceano?",
+    "Quias desses animais NÃO é possível ver no Polo Norte?"};
 
 string nivel02[2] = {
     "Quias desses animais NÃO é possível ver no Polo Norte?",
@@ -82,10 +84,10 @@ string nivel02[2] = {
 
 void iniciar()
 {
-  string opcao;
+  char opcao;
   int continuar;
 
-  for (int c = 0; c <= 2; c++)
+  for (int c = 0; c <= 3; c++)
   {
     cout << "[5 pontos] - " << nivel01[c] << endl;
     printf("A - SIM \n");
@@ -97,9 +99,80 @@ void iniciar()
     printf("- - - - - - - - - - - - - - - - - - - - \n\n");
 
     printf("JOGADOR-01 >> ");
-    scanf("%c", &opcao);
+    cin >> opcao;
 
-    if (opcao == "A")
+    int res = avalia_resposta(opcao, 'B');
+    system("pause");
+    system("cls");
+    statusmenu();
+
+    // Quando RESPOSTA ERRADA!
+    if (res == 0)
+    {
+      if (vidas >= 1) // se tiver vidas
+      {
+        continue;
+      }
+      else
+      {
+        printf("VOCE JA USOU TODAS VIDAS \n\n");
+        system("pause");
+        finalizar();
+        break;
+      }
+    }
+
+    if (c == 2)
+    {
+      finalizar();
+      break;
+    }
+  }
+}
+
+int avalia_resposta(char opcao, char correta)
+{
+  if (opcao == correta)
+  {
+    printf("✔ - RESPOSTA CERTA \n");
+    printf("CONTINUE. \n");
+    pontuacao_atual += 5;
+
+    return 1;
+  }
+  else
+  {
+    printf("\n");
+    printf("RESPOSTA ERRADA! \n");
+    printf("%c - E A OPCAO CORRETA. \n\n", correta);
+    vidas -= 1;
+
+    return 0;
+  }
+}
+
+void finalizar()
+{
+  system("cls");
+
+  printf("========= PARTIDA FINALIZADA ========== \n");
+  printf("======================================= \n");
+  printf("== VIDAS RESTANTES: %i \n", vidas);
+  printf("== AJUDAS RESTANTES: %i \n", ajudas);
+  printf("== PONTUACAO %i DE 100 \n", pontuacao_atual);
+  printf("- - - - - - - - - - - - - - - - - - - - \n\n");
+}
+
+/*
+  > Returns 0, if both the strings are the same.
+
+  > Returns <0, if the value of the character of the first string is smaller as compared to the second string input.
+
+  > Results out to be >0, when the second string is greater in comparison.
+*/
+
+/*
+if (opcao == 'A')
     {
       printf("RESPOSTA ERRADA! \n");
       printf("B - É A OPCAO CORRETA. \n");
@@ -121,18 +194,7 @@ void iniciar()
         finalizar();
       }
     }
-    // RESPOSTA CERTA
-    else if (opcao == "B")
-    {
-      printf("B - RESPOSTA CERTA :D \n");
-      printf("CONTINUE. \n");
-    }
-    else if (opcao == "C")
-    {
-      printf("RESPOSTA ERRADA! \n");
-      printf("B - É A OPCAO CORRETA. \n");
-    }
-    else if (opcao == "AJUDA")
+    else if (opcao == 'R')
     {
       if (ajudas >= 1 && ajudas <= 3)
       {
@@ -140,16 +202,5 @@ void iniciar()
       }
     }
   }
-}
 
-void finalizar()
-{
-  system("cls");
-
-  printf("========= PARTIDA FINALIZADA ========== \n");
-  printf("======================================= \n");
-  printf("== VIDAS RESTANTES: %i \n", vidas);
-  printf("== AJUDAS RESTANTES: %i \n", ajudas);
-  printf("== PONTUACAO %i DE 100 \n", pontuacao_atual);
-  printf("- - - - - - - - - - - - - - - - - - - - \n\n");
-}
+*/
