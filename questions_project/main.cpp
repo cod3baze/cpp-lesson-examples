@@ -12,6 +12,7 @@ void menuprincipal();
 int avalia_resposta(char opcao, char correta);
 void iniciar();
 void finalizar();
+void ajudaUniversitarios();
 
 int vidas = 3;
 int ajudas = 2;
@@ -116,7 +117,6 @@ Question questions01[5] = {
 void iniciar()
 {
   char opcao;
-  int continuar;
 
   for (int c = 0; c <= 3; c++)
   {

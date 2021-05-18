@@ -59,16 +59,17 @@ void regras()
   printf("O jogo contém 30 perguntas \n");
   printf("Sendo elas 10 faceis, 10 intermediárias e 10 dificeis! \n");
   printf("Ao longo do jogo você terá 3 vidas e 2 ajudas! \n");
-  printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+  printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n");
 }
 
 void statusMenu()
 {
-  printf("=========================\n", vidas);
-  printf(" vidas restantes %i \n", vidas);
-  printf(" ajudas restatantes %i \n", ajudas);
-  printf(" pontuação atual %i \n", pontuacao_atual);
-  printf("=========================\n\n", vidas);
+  printf("========= GAME ========== \n");
+  printf("========================= \n");
+  printf("== Vidas restantes: %i \n", vidas);
+  printf("== Ajudas restantes: %i \n", ajudas);
+  printf("== Pontuacaoo atual: %i \n", pontuacao_atual);
+  printf("- - - - - - - - - - - - - \n\n");
 }
 
 void menuPrincipal()
@@ -134,7 +135,7 @@ void iniciar()
     {
       if (ajudas >= 1)
       {
-        printf("\n DICA");
+        printf("\n AJUDA UNIVERSITARIOS!!!");
         ajudas -= 1;
 
         printf("\n\n JOGADOR-01 >> ");
@@ -200,8 +201,9 @@ int avalia_resposta(char opcao, char correta)
 void finalizar()
 {
   system("cls");
-  printf("JOGO FINALIZADO \n");
-  printf("pontos %i de 100 \n", pontuacao_atual);
+  printf("========= PARTIDA FINALIZADA ========== \n");
+  printf("PONTOS %i DE 100 \n\n", pontuacao_atual);
+  printf("- - - - - - - - - - - - - - - - - - - - \n\n");
   system("pause");
 
   vidas = 3,
