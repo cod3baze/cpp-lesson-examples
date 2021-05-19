@@ -12,6 +12,9 @@ void menuPrincipal();
 int avalia_resposta(char opcao, char correta, int pontuacao);
 void iniciar();
 void finalizar();
+
+void recomecarJogo(int recomecar);
+
 void ajudaUniversitarios(string titulo, string errada, string correta, string opcaoC, char opcaoCorreta, int pontuacao);
 
 int
@@ -79,7 +82,15 @@ void menuPrincipal()
   do
   {
     printf("[0] - para sair do jogo \n");
-    printf("[1] - para começar o jogo \n\n");
+    if (status != 0)
+    {
+      printf("[1] - para recomeçar o jogo \n\n");
+    }
+    else if (status == 0)
+    {
+      printf("[1] - para começar o jogo \n\n");
+    }
+
     printf("JOGADOR-01 >> ");
     scanf("%i", &status);
 
@@ -98,20 +109,16 @@ void menuPrincipal()
   } while (status != 0);
 }
 
-Question questions01[15] = {
+Question questions01[30] = {
     Question("Existe mais de 1 polo norte. voçê sabe quantos são?", 'A', "Pelo menos tres Polos Nortes", "Dois polo norte", "Nenhuma das opcoes", 5),
 
     Question("Quais dessas regiões não faz parte do territótio Ártico?", 'C', "Canada", "Groenlandia", "China", 5),
 
-    Question("O polo norte se banha em qual oceano?",
-             'B',
-             "Oceano Atlantico", "Oceano Glacial Artico", "Oceano Pacifico", 5),
+    Question("O polo norte se banha em qual oceano?", 'B', "Oceano Atlantico", "Oceano Glacial Artico", "Oceano Pacifico", 5),
 
-    Question("Quais desses animais NÃO é possível ver no Polo Norte?",
-             'B', "Baleia Jubarte", "Pinguim-imperador", "Urso-polar", 5),
+    Question("Quais desses animais NÃO é possível ver no Polo Norte?", 'B', "Baleia Jubarte", "Pinguim-imperador", "Urso-polar", 5),
 
-    Question("Qual é mais frio, o Polo norte ou o Polo sul?",
-             'A', "Polo Sul", "Polo Norte", "Ambos", 5),
+    Question("Qual é mais frio, o Polo norte ou o Polo sul?", 'A', "Polo Sul", "Polo Norte", "Ambos", 5),
 
     Question("Qual é o recorde de temperatura mais baixa já alcançada no Alasca?", 'A', "62*C Negativos", "53*C Negativos", "43*C Negativos", 5),
 
@@ -132,13 +139,42 @@ Question questions01[15] = {
     Question("Quem pintou o teto da capela sistina?", 'B', "Leonardo da Vinci", "Michelangelo", "Sandro Botticelli", 10),
 
     Question("Em que cidade ocorreu a Eco-92, a Conferência das Nações Unidas sobre ambiente e desenvolvimento?", 'C', "Buenos Aires", "Montevidéu", "Rio de Janeiro", 10),
-};
+
+    Question("Qual o menor e maior país do mundo?", 'A', "Vaticano e Rússia", "Nauru e China", "Mônaco e Canadá", 5),
+
+    Question("Normalmente, quantos litros de sangue uma pessoa têm?", 'B', "Entre e 2 e 4 litros", "Entre 4 e 6 litros", "Entre 7 e 9 litros", 5),
+
+    Question("Qual a velocidade da Luz?", 'A', "300.000 Km/s", "340 m/s", "30.000 km/h", 5),
+
+    Question("Qual dessas opções contêm apenas construções famosas que ficam nos Estados Unidos?", 'A', "Estátua da Liberdade, Golden Gate Bridge e Empire State Building", "Estátua da liberdade, Big Bem e Burj khalifa", "Lincoln Memorial, Sydney Opera e Grand Canyon", 5),
+
+    Question("Qual desses países é transcontinental?", 'B', "China", "Rússia", "Istambul", 5),
+
+    Question("Pessoas com que tipo sanguíneo são consideradas doadores universais?", 'C', "Tipo A", "Tipo B", "Tipo O", 5),
+
+    Question("O que a palavra “Legend” significa em português?", 'C', "Legenda", "Conto", "Lenda", 5),
+
+    Question("Quanto tempo a luz do sol demora para chegar na terra?", 'A', "8 minutos", "12 minutos", "8 horas", 5),
+
+    Question("Qual a montanha mais alta do Brasil?", 'B', "Pico do Paraná", "Pico da Neblina", "Pico da Bandeira", 5),
+
+    Question("Qual o metal cujo símbolo químico é o Au?", 'A', "Ouro", "Prata", "Cobre", 5),
+
+    Question("Onde foi inventado o chuveiro elétrico?", 'C', "França", "Inglaterra", "Brasil", 5),
+
+    Question("Qual é o nome do macho da cabra?", 'B', "Cabro", "Bode", "Bezerro", 5),
+
+    Question("Quais são as cores da bandeira da China?", 'A', "Vermelho e Amarelo", "Vermelho e Branco", "Vermelha e Azul", 5),
+
+    Question("Qual é o maior continente em extensão?", 'C', "África", "Europa", "Ásia", 5),
+
+    Question("Quantas patas uma formiga possui?", 'B', "4 patas", "6 patas", "8 patas", 5)};
 
 void iniciar()
 {
   char opcao;
 
-  for (int c = 0; c < 30; c++)
+  for (int c = 0; c < 3; c++)
   {
     printf("Questao %i \n\n", c + 1);
     cout << questions01[c].pontuacao << " pontos - " << questions01[c].title << endl;
@@ -192,11 +228,12 @@ void iniciar()
       {
         printf("Suas vidas acabaram! \n");
         system("pause");
-        finalizar();
         break;
       }
     }
   }
+
+  finalizar();
 };
 
 /*
@@ -228,6 +265,9 @@ void finalizar()
   printf("- - - - - PONTOS %i DE 300 - - - - - - - -\n\n", pontuacao_atual);
   printf("- - - - - - - - - - - - - - - - - - - - \n\n");
   system("pause");
+  system("cls");
+
+  statusMenu();
 
   vidas = 3,
   ajudas = 2,
