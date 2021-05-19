@@ -137,7 +137,7 @@ void iniciar()
     {
       if (ajudas >= 1) // se AINDA TEM AJUAS DISPONIVEL
       {
-        printf("\n A opcao correta é a X \n\n");
+        ajudaUniversitarios();
         ajudas -= 1;
 
         printf("JOGADOR-01 >> ");
@@ -211,44 +211,33 @@ void finalizar()
   printf("- - - - - - - - - - - - - - - - - - - - \n\n");
 }
 
-/*
-  > Returns 0, if both the strings are the same.
+void ajudaUniversitarios(string titulo, char correta, char errada)
+{
+  system("cls");
 
-  > Returns <0, if the value of the character of the first string is smaller as compared to the second string input.
+  printf("- - - - - - - - - - - - - - - - - - -\n");
+  printf(" AJUDA DOS UNIVERSITARIOS \n");
+  printf("- - - - - - - - - - - - - - - - - - -\n\n");
 
-  > Results out to be >0, when the second string is greater in comparison.
-*/
-
-/*
-if (opcao == 'A')
-    {
-      printf("RESPOSTA ERRADA! \n");
-      printf("B - É A OPCAO CORRETA. \n");
-      if (vidas >= 1)
-      {
-        printf("continuar jogando? 1 - SIM, 0 - NAO \n");
-        printf("JOGADOR-01 >> ");
-        scanf("%i", &continuar);
-
-        if (continuar == 0)
-        {
-          finalizar();
-          break;
-        }
-      }
-      else
-      {
-        printf("VOCE JA USOU TODAS VIDAS");
-        finalizar();
-      }
-    }
-    else if (opcao == 'R')
-    {
-      if (ajudas >= 1 && ajudas <= 3)
-      {
-        ajudas -= 1;
-      }
-    }
+  if (correta == 'A' && errada == 'B')
+  {
+    cout << "A - " << correta << endl;
+    cout << "B - " << correta << endl;
+  }
+  else if (correta == 'B')
+  {
+    cout << "A - " << correta << endl;
+    cout << "B - " << correta << endl;
+    cout << "C - " << correta << endl;
+  }
+  else
+  {
+    cout << "A - " << correta << endl;
+    cout << "B - " << correta << endl;
+    cout << "C - " << correta << endl;
   }
 
-*/
+  cout << "A - " << correta << endl;
+  cout << "B - " << correta << endl;
+  cout << "C - " << correta << endl;
+}
