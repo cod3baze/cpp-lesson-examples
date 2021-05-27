@@ -19,13 +19,16 @@ void finalizar();
 void recomecarJogo(int recomecar);
 void ajudaUniversitarios(string titulo, string errada, string correta, string opcaoC, char opcaoCorreta, int pontuacao);
 void textColor (int words, int backgroud);
+void progresso(int status);
 
 int
     vidas = 3,
     ajudas = 2,
     pontuacao_atual = 0;
     
-
+string respostas01[15] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
+string respostas02[15] = {"16", "17", "18", "19", "", "20", "22", "23", "24", "25", "26", "27", "28", "29", "30"};
+    
 class Question
 {
 public:
@@ -61,7 +64,7 @@ int main()
 
 void regras()
 {
-  printf("================= Bem vindo ao jogo X ================\n");
+  printf("================= Bem vindo ao jogo QUIZ ================\n");
   printf("======================================================\n");
   printf("O jogo contêm 30 perguntas de conhecimentos gerais. \n");
   printf("Sendo elas 10 fáceis, 10 intermediárias e 10 difíceis! \n");
@@ -77,6 +80,20 @@ void statusMenu()
   printf("== Ajudas restantes: %i \n", ajudas);
   printf("== Pontuação atual: %i \n", pontuacao_atual);
   printf("- - - - - - - - - - - - - \n\n");
+}
+
+void progresso(int status) {
+	if(status <= 14) {
+		for(int i = 0; i <= 14; i++) {
+			cout << respostas01[i] << " - ";
+		}
+	}else {
+		for(int i = 0; i <= 14; i++) {
+			cout << respostas02[i] << " - ";
+		}
+	}
+	
+	printf("\n\n- - - - - - - - - - - - - \n\n");
 }
 
 void menuPrincipal()
@@ -180,6 +197,8 @@ void iniciar()
 
   for (int c = 0; c < 30; c++)
   {
+  	progresso(c);
+  	
     printf("Questão %i \n\n", c + 1);
     cout << questions01[c].pontuacao << " pontos - " << questions01[c].title << endl;
     cout << "\t A - " << questions01[c].opcaoA << endl;
@@ -225,6 +244,11 @@ void iniciar()
 
     if (res == 0) // se resposta errada
     {
+    	if(c >= 15){
+    		respostas02[c] = "E";
+		}else {
+			respostas01[c] = "E";
+		}
       if (vidas >= 1)
       { // se tiver vidas
         continue;
@@ -235,7 +259,13 @@ void iniciar()
         system("pause");
         break;
       }
-    }
+    }else {
+    	if(c >= 15){
+    		respostas02[c] = "C";
+		}else {
+			respostas01[c] = "C";
+		}
+	}
   }
 
   finalizar();
@@ -246,7 +276,7 @@ int avalia_resposta(char opcao, char correta, int pontuacao)
   if (toupper(opcao) == toupper(correta))
   {
   	textColor(2, 0);
-    printf("\n Resposta certa \n");
+    printf("\n RESPOSTA CORRETA! \n\n");
     pontuacao_atual += pontuacao;
     textColor(15, 0);
 
@@ -256,7 +286,7 @@ int avalia_resposta(char opcao, char correta, int pontuacao)
   {
   	textColor(4, 0);
     printf("\n Resposta errada! \n");
-    printf("\n RESPOSTA CORRETA - %c \n", correta);
+    printf("\n RESPOSTA CORRETA - %c \n\n", correta);
     vidas--;
     textColor(15, 0);
 
