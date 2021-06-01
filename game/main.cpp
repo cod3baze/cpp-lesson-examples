@@ -18,17 +18,16 @@ void iniciar();
 void finalizar();
 void recomecarJogo(int recomecar);
 void ajudaUniversitarios(string titulo, string errada, string correta, string opcaoC, char opcaoCorreta, int pontuacao);
-void textColor (int words, int backgroud);
+void textColor(int words, int backgroud);
 void progresso(int status);
 
 int
     vidas = 3,
     ajudas = 2,
     pontuacao_atual = 0;
-    
-string respostas01[15] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
-string respostas02[15] = {"16", "17", "18", "19", "", "20", "22", "23", "24", "25", "26", "27", "28", "29", "30"};
-    
+
+string respostas01[30] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "", "20", "22", "23", "24", "25", "26", "27", "28", "29", "30"};
+
 class Question
 {
 public:
@@ -66,9 +65,9 @@ void regras()
 {
   printf("================= Bem vindo ao jogo QUIZ ================\n");
   printf("======================================================\n");
-  printf("O jogo contÍm 30 perguntas de conhecimentos gerais. \n");
-  printf("Sendo elas 10 f·ceis, 10 intermedi·rias e 10 difÌceis! \n");
-  printf("Ao longo do jogo vocÍ ter· 3 vidas e 2 ajudas! \n");
+  printf("O jogo cont√™m 30 perguntas de conhecimentos gerais. \n");
+  printf("Sendo elas 10 f√°ceis, 10 intermedi√°rias e 10 dif√≠ceis! \n");
+  printf("Ao longo do jogo voc√™ ter√° 3 vidas e 2 ajudas! \n");
   printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n");
 }
 
@@ -78,22 +77,17 @@ void statusMenu()
   printf("========================= \n");
   printf("== Vidas restantes: %i \n", vidas);
   printf("== Ajudas restantes: %i \n", ajudas);
-  printf("== PontuaÁ„o atual: %i \n", pontuacao_atual);
+  printf("== Pontua√ß√£o atual: %i \n", pontuacao_atual);
   printf("- - - - - - - - - - - - - \n\n");
 }
 
-void progresso(int status) {
-	if(status <= 14) {
-		for(int i = 0; i <= 14; i++) {
-			cout << respostas01[i] << " - ";
-		}
-	}else {
-		for(int i = 0; i <= 14; i++) {
-			cout << respostas02[i] << " - ";
-		}
-	}
-	
-	printf("\n\n- - - - - - - - - - - - - \n\n");
+void progresso(int status)
+{
+  for (int i = 0; i < 3; i++)
+  {
+    cout << respostas01[i] << " - ";
+  }
+  printf("\n\n- - - - - - - - - - - - - \n\n");
 }
 
 void menuPrincipal()
@@ -105,11 +99,11 @@ void menuPrincipal()
     printf("[0] - Para sair do jogo \n");
     if (status != 0)
     {
-      printf("[1] - Para recomeÁar o jogo \n\n");
+      printf("[1] - Para recome√ßar o jogo \n\n");
     }
     else if (status == 0)
     {
-      printf("[1] - Para comeÁar o jogo \n\n");
+      printf("[1] - Para come√ßar o jogo \n\n");
     }
 
     printf("JOGADOR-01 >> ");
@@ -131,63 +125,63 @@ void menuPrincipal()
 }
 
 Question questions01[30] = {
-    Question("Existe mais de 1 polo norte. vocÍ sabe quantos s„o?", 'A', "Pelo menos tres Polos Nortes", "Dois polo norte", "Nenhuma das opcoes", 5),
+    Question("Existe mais de 1 polo norte. voc√™ sabe quantos s√£o?", 'A', "Pelo menos tres Polos Nortes", "Dois polo norte", "Nenhuma das opcoes", 5),
 
-    Question("Quais dessas regiıes n„o faz parte do territÛrio Ant·rtico?", 'C', "Canad·", "Groenl‚ndia", "China", 5),
+    Question("Quais dessas regi√µes n√£o faz parte do territ√≥rio Ant√°rtico?", 'C', "Canad√°", "Groenl√¢ndia", "China", 5),
 
     Question("Qual a velocidade da Luz?", 'A', "300.000 Km/s", "340 m/s", "30.000 km/h", 5),
 
-    Question("O polo norte se banha em qual oceano?", 'B', "Oceano Atl‚ntico", "Oceano Glacial ¡rtico", "Oceano PacÌfico", 5),
+    Question("O polo norte se banha em qual oceano?", 'B', "Oceano Atl√¢ntico", "Oceano Glacial √Årtico", "Oceano Pac√≠fico", 5),
 
-    Question("Normalmente, quantos litros de sangue uma pessoa tÍm?", 'B', "Entre e 2 e 4 litros", "Entre 4 e 6 litros", "Entre 7 e 9 litros", 5),
+    Question("Normalmente, quantos litros de sangue uma pessoa t√™m?", 'B', "Entre e 2 e 4 litros", "Entre 4 e 6 litros", "Entre 7 e 9 litros", 5),
 
-    Question("Quais desses animais n„o È possÌel ver no Polo Norte?", 'B', "Baleia Jubarte", "Pinguim-imperador", "Urso-polar", 5),
+    Question("Quais desses animais n√£o √© poss√≠el ver no Polo Norte?", 'B', "Baleia Jubarte", "Pinguim-imperador", "Urso-polar", 5),
 
-    Question("O que a palavra LEGEND significa em portuguÍs?", 'C', "Legenda", "Conto", "Lenda", 5),
+    Question("O que a palavra LEGEND significa em portugu√™s?", 'C', "Legenda", "Conto", "Lenda", 5),
 
-    Question("Qual È mais frio, o Polo norte ou o Polo sul?", 'A', "Polo Sul", "Polo Norte", "Ambos", 5),
+    Question("Qual √© mais frio, o Polo norte ou o Polo sul?", 'A', "Polo Sul", "Polo Norte", "Ambos", 5),
 
-    Question("Qual È o recorde de temperatura mais baixa j· alcanÁda no Alasca?", 'A', "62∫C Negativos", "53∫C Negativos", "43∫C Negativos", 5),
+    Question("Qual √© o recorde de temperatura mais baixa j√° alcan√ßda no Alasca?", 'A', "62¬∫C Negativos", "53¬∫C Negativos", "43¬∫C Negativos", 5),
 
-    Question("Qual È a montanha mais alta dos Estados Unidos?", 'B', "Chamberlin", "Denali", "Hunter", 5),
+    Question("Qual √© a montanha mais alta dos Estados Unidos?", 'B', "Chamberlin", "Denali", "Hunter", 5),
 
-    Question("Qual o metal cujo sÌmbolo quÌmico È o Au?", 'A', "Ouro", "Prata", "Cobre", 10),
+    Question("Qual o metal cujo s√≠mbolo qu√≠mico √© o Au?", 'A', "Ouro", "Prata", "Cobre", 10),
 
-    Question("Qual È o maior lago do Alasca?", 'B', "Clark", "Iliamna", "Abyss", 10),
+    Question("Qual √© o maior lago do Alasca?", 'B', "Clark", "Iliamna", "Abyss", 10),
 
-    Question("Qual È a capital do estado do Alasca?", 'C', "Anchorage", "Fairbanks", "Juneau", 10),
+    Question("Qual √© a capital do estado do Alasca?", 'C', "Anchorage", "Fairbanks", "Juneau", 10),
 
-    Question("Qual È o maior continente em extens„o?", 'C', "¡frica", "Europa", "¡sia", 10),
+    Question("Qual √© o maior continente em extens√£o?", 'C', "√Åfrica", "Europa", "√Åsia", 10),
 
-    Question("Quantos tipos de Salm„o podem ser encontrados no Alasca?", 'A', "5", "4", "3", 10),
+    Question("Quantos tipos de Salm√£o podem ser encontrados no Alasca?", 'A', "5", "4", "3", 10),
 
     Question("Jim Morrison era vocalista de que grupo?", 'B', " The Police", "The Doors", "Pink Floyd", 10),
 
-    Question("Quem foi o criador da tragÈdia grega?", 'C', "Homero", "EurÌpedes", "…squilo", 10),
+    Question("Quem foi o criador da trag√©dia grega?", 'C', "Homero", "Eur√≠pedes", "√âsquilo", 10),
 
-    Question("Quantos graus s„o neces·rios para que dois ¬ngulos sejam complementares?", 'A', "90∫", "40∫", "75∫", 10),
+    Question("Quantos graus s√£o neces√°rios para que dois √Çngulos sejam complementares?", 'A', "90¬∫", "40¬∫", "75¬∫", 10),
 
     Question("Quem pintou o teto da capela sistina?", 'B', "Leonardo da Vinci", "Michelangelo", "Sandro Botticelli", 10),
 
-    Question("Em que cidade ocorreu a Eco-92, a ConferÍncia das NaÁıes Unidas sobre ambiente e desenvolvimento?", 'C', "Buenos Aires", "MontevidÈu", "Rio de Janeiro", 10),
+    Question("Em que cidade ocorreu a Eco-92, a Confer√™ncia das Na√ß√µes Unidas sobre ambiente e desenvolvimento?", 'C', "Buenos Aires", "Montevid√©u", "Rio de Janeiro", 10),
 
-    Question("Qual o menor e maior paÌs do mundo?", 'A', "Vaticano e R˙ssia", "Nauru e China", "MÙnaco e Canad·", 15),
+    Question("Qual o menor e maior pa√≠s do mundo?", 'A', "Vaticano e R√∫ssia", "Nauru e China", "M√¥naco e Canad√°", 15),
 
-    Question("Qual dessas opÁıes contÍm apenas construÁıes famosas que ficam nos Estados Unidos?", 'A', "Est·tua da Liberdade, Golden Gate Bridge e Empire State Building", "Est·tua da liberdade, Big Bem e Burj khalifa", "Lincoln Memorial, Sydney Opera e Grand Canyon", 15),
+    Question("Qual dessas op√ß√µes cont√™m apenas constru√ß√µes famosas que ficam nos Estados Unidos?", 'A', "Est√°tua da Liberdade, Golden Gate Bridge e Empire State Building", "Est√°tua da liberdade, Big Bem e Burj khalifa", "Lincoln Memorial, Sydney Opera e Grand Canyon", 15),
 
-    Question("Qual desses paÌses È transcontinental?", 'B', "China", "R˙ssia", "Istambul", 15),
+    Question("Qual desses pa√≠ses √© transcontinental?", 'B', "China", "R√∫ssia", "Istambul", 15),
 
-    Question("Pessoas com que tipo sanguÌneo s„o consideradas doadores universais?", 'C', "Tipo A", "Tipo B", "Tipo O", 15),
+    Question("Pessoas com que tipo sangu√≠neo s√£o consideradas doadores universais?", 'C', "Tipo A", "Tipo B", "Tipo O", 15),
 
     Question("Quanto tempo a luz do sol demora para chegar na terra?", 'A', "8 minutos", "12 minutos", "8 horas", 15),
 
-    Question("Qual a montanha mais alta do Brasil?", 'B', "Pico do Paran·", "Pico da Neblina", "Pico da Bandeira", 15),
+    Question("Qual a montanha mais alta do Brasil?", 'B', "Pico do Paran√°", "Pico da Neblina", "Pico da Bandeira", 15),
 
-    Question("Onde foi inventado o chuveiro elÈtrico?", 'C', "FranÁa", "Inglaterra", "Brasil", 15),
+    Question("Onde foi inventado o chuveiro el√©trico?", 'C', "Fran√ßa", "Inglaterra", "Brasil", 15),
 
-    Question("Qual È o nome do macho da cabra?", 'B', "Cabro", "Bode", "Bezerro", 15),
+    Question("Qual √© o nome do macho da cabra?", 'B', "Cabro", "Bode", "Bezerro", 15),
 
-    Question("Quais s„o as cores da bandeira da China?", 'A', "Vermelho e Amarelo", "Vermelho e Branco", "Vermelha e Azul", 15),
+    Question("Quais s√£o as cores da bandeira da China?", 'A', "Vermelho e Amarelo", "Vermelho e Branco", "Vermelha e Azul", 15),
 
     Question("Quantas patas uma formiga possui?", 'B', "4 patas", "6 patas", "8 patas", 15)};
 
@@ -197,16 +191,16 @@ void iniciar()
 
   for (int c = 0; c < 30; c++)
   {
-  	progresso(c);
-  	
-    printf("Quest„o %i \n\n", c + 1);
+    progresso(c);
+
+    printf("Quest√£o %i \n\n", c + 1);
     cout << questions01[c].pontuacao << " pontos - " << questions01[c].title << endl;
     cout << "\t A - " << questions01[c].opcaoA << endl;
     cout << "\t B - " << questions01[c].opcaoB << endl;
     cout << "\t C - " << questions01[c].opcaoC << endl;
 
     printf("\n - - - - - - - - - - -- -  -- - - - -");
-    printf("\n R - PARA PEDIR AJUDA AOS UNIVERSIT¡RIOS");
+    printf("\n R - PARA PEDIR AJUDA AOS UNIVERSIT√ÅRIOS");
     printf("\n - - - - - - - - - - -- -  -- - - - -");
 
     printf("\n\n JOGADOR-01 >> ");
@@ -216,7 +210,7 @@ void iniciar()
     {
       if (ajudas >= 1)
       {
-        printf("\n AJUDA UNIVERSIT¡RIOS!!!");
+        printf("\n AJUDA UNIVERSIT√ÅRIOS!!!");
         ajudas -= 1;
         ajudaUniversitarios(questions01[c].title, questions01[c].opcaoA, questions01[c].opcaoB, questions01[c].opcaoC, questions01[c].answer, questions01[c].pontuacao);
 
@@ -225,7 +219,7 @@ void iniciar()
       }
       else
       {
-        printf("\n VOC  N√O TEM MAIS AJUDAS DISPONÕVEIS");
+        printf("\n VOC√ä N√ÉO TEM MAIS AJUDAS DISPON√çVEIS");
 
         printf("\n\n JOGADOR-01 >> ");
         cin >> opcao;
@@ -244,11 +238,8 @@ void iniciar()
 
     if (res == 0) // se resposta errada
     {
-    	if(c >= 15){
-    		respostas02[c] = "E";
-		}else {
-			respostas01[c] = "E";
-		}
+      respostas01[c] = "E";
+
       if (vidas >= 1)
       { // se tiver vidas
         continue;
@@ -259,13 +250,11 @@ void iniciar()
         system("pause");
         break;
       }
-    }else {
-    	if(c >= 15){
-    		respostas02[c] = "C";
-		}else {
-			respostas01[c] = "C";
-		}
-	}
+    }
+    else
+    {
+      respostas01[c] = "C";
+    }
   }
 
   finalizar();
@@ -275,7 +264,7 @@ int avalia_resposta(char opcao, char correta, int pontuacao)
 {
   if (toupper(opcao) == toupper(correta))
   {
-  	textColor(2, 0);
+    textColor(2, 0);
     printf("\n RESPOSTA CORRETA! \n\n");
     pontuacao_atual += pontuacao;
     textColor(15, 0);
@@ -284,7 +273,7 @@ int avalia_resposta(char opcao, char correta, int pontuacao)
   }
   else
   {
-  	textColor(4, 0);
+    textColor(4, 0);
     printf("\n Resposta errada! \n");
     printf("\n RESPOSTA CORRETA - %c \n\n", correta);
     vidas--;
@@ -294,20 +283,35 @@ int avalia_resposta(char opcao, char correta, int pontuacao)
   }
 }
 
-typedef enum{
-	BLACK, BLUE, GREEN, CYAN, RED, MAGENTA, BROWN, LIGHTGRAY, DARKGRAY,
-	LIGHTBLUE, LIGHTGREEN, LIGHTCYAN, LIGHTRED, LIGHTMAGENTA, YELLOW, WHITE
+typedef enum
+{
+  BLACK,
+  BLUE,
+  GREEN,
+  CYAN,
+  RED,
+  MAGENTA,
+  BROWN,
+  LIGHTGRAY,
+  DARKGRAY,
+  LIGHTBLUE,
+  LIGHTGREEN,
+  LIGHTCYAN,
+  LIGHTRED,
+  LIGHTMAGENTA,
+  YELLOW,
+  WHITE
 } COLORS;
 
 static int __BACKGROUND = 1;
 static int __FOREGROUND = 7;
 
-void textColor (int words, int backgroud)
+void textColor(int words, int backgroud)
 {
-    __FOREGROUND = words;
-    __BACKGROUND = backgroud;
-    SetConsoleTextAttribute (GetStdHandle (STD_OUTPUT_HANDLE),
-    words + (__BACKGROUND << 4));
+  __FOREGROUND = words;
+  __BACKGROUND = backgroud;
+  SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
+                          words + (__BACKGROUND << 4));
 }
 
 void finalizar()
@@ -331,7 +335,7 @@ void ajudaUniversitarios(string titulo, string errada, string correta, string op
   system("cls");
 
   printf("\n - - - - - - - - - - -- -  -- - - - -");
-  printf("\n  AJUDA DOS UNIVERSITÔøΩRIOS");
+  printf("\n  AJUDA DOS UNIVERSIT√Ø¬ø¬ΩRIOS");
   printf("\n - - - - - - - - - - -- -  -- - - - -");
 
   if (opcaoCorreta == 'A')
