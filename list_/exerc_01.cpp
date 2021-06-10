@@ -20,7 +20,7 @@ int main()
   {
     for (int c = 0; c < square; c++)
     {
-      printf("Insira o número da %i linha na coluna $i: ", matrix[i][c]);
+      printf("Insira o número da %i linha na coluna $i: ", i + 1, c + 1);
       scanf("%d", &matrix[i][c]);
 
       if (matrix[i][c] < less || less == 0)
