@@ -5,12 +5,12 @@
 #include <string>
 
 /*
-2.  Escreva um programa que armazene um vetor de até 30 inteiros. O programa deve fornecer as seguintes operações:
+  2.  Escreva um programa que armazene um vetor de até 30 inteiros. O programa deve fornecer as seguintes operações:
 
-a. ✔ Inserir um elemento no final do vetor
-b. ✔ Inserir um elemento em uma dada posição
-c. ✔ Remover um elemento de uma posição indicada
-d. ✔ Remover todos elementos iguais a um valor indicado
+  a. ✔ Inserir um elemento no final do vetor
+  b. ✔ Inserir um elemento em uma dada posição
+  c. ✔ Remover um elemento de uma posição indicada
+  d. ✔ Remover todos elementos iguais a um valor indicado
 */
 
 using namespace std;
